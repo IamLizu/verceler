@@ -74,7 +74,7 @@ We follow standard JavaScript coding conventions. Please make sure your code adh
 
 ## License
 
-`verceler` is licensed under the MIT License. See the LICENSE file for more details.
+`verceler` is licensed under the MIT License. See the [LICENSE](./LICENSE.md) file for more details.
 
 ---
 

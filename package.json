@@ -1,6 +1,6 @@
 {
     "name": "verceler",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "description": "Automates tag or released based deployments on Vercel using GitHub Actions",
     "main": "src/index.js",
     "bin": {

@@ -24,5 +24,24 @@
     "devDependencies": {
         "jest": "^29.7.0",
         "jest-mock": "^29.7.0"
+    },
+    "keywords": [
+        "vercel",
+        "deployment",
+        "CI/CD",
+        "continuous-deployment",
+        "github-actions",
+        "cli",
+        "nodejs",
+        "automation",
+        "environment-variables",
+        "github-secrets",
+        "npm-package",
+        "vercel-cli",
+        "devops"
+    ],
+    "homepage": "https://github.com/hasan-zaag/verceler-npm#readme",
+    "bugs": {
+        "url": "https://github.com/hasan-zaag/verceler-npm/issues"
     }
 }

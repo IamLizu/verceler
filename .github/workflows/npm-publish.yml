@@ -8,23 +8,37 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
-            - uses: actions/setup-node@v3
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v4
               with:
                   node-version: 20
-            - run: npm ci
-            - run: npm test --verbose --coverage
+
+            - name: Install dependencies
+              run: yarn install --frozen-lockfile
+
+            - name: Run tests
+              run: yarn test --verbose --coverage
 
     publish-npm:
         needs: build
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
-            - uses: actions/setup-node@v3
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v4
               with:
                   node-version: 20
                   registry-url: https://registry.npmjs.org/
-            - run: npm ci
-            - run: npm publish
+
+            - name: Install dependencies
+              run: yarn install --frozen-lockfile
+
+            - name: Publish package
+              run: yarn publish
               env:
                   NODE_AUTH_TOKEN: ${{secrets.npm_token}}

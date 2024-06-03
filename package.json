@@ -1,0 +1,28 @@
+{
+    "name": "verceler",
+    "version": "0.0.1",
+    "description": "Automates tag or released based deployments on Vercel using GitHub Actions",
+    "main": "src/index.js",
+    "bin": {
+        "verceler": "src/index.js"
+    },
+    "scripts": {
+        "test": "jest",
+        "test:coverage": "jest --coverage"
+    },
+    "repository": "https://github.com/hasan-zaag/verceler-npm.git",
+    "author": "hasan-zaag <hasan@zaagsys.com>",
+    "license": "MIT",
+    "dependencies": {
+        "@octokit/rest": "^20.1.1",
+        "axios": "^1.6.8",
+        "commander": "^12.0.0",
+        "cross-spawn": "^7.0.3",
+        "libsodium-wrappers": "^0.7.13",
+        "progress": "^2.0.3"
+    },
+    "devDependencies": {
+        "jest": "^29.7.0",
+        "jest-mock": "^29.7.0"
+    }
+}

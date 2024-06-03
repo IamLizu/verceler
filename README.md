@@ -26,12 +26,14 @@ verceler --vt <vercel_token> --gt <github_token> [options]
 
 ### Options
 
--   `vercel-token, -vt <token>`: Your Vercel API token.
--   `github-token, -gt <token>`: Your GitHub API token.
--   `create-github-workflow, -cgw`: Create a GitHub Actions workflow file for Vercel deployment.
--   `debug, -d`: Enable debug mode to log extra information.
--   `load-env, -le <envs>`: Comma-separated list of environments to set variables in Vercel projects (e.g., preview,development,production).
--   `domain, -dom <domain>`: Domain name to set up with your Vercel project.
+| Option                           | Description                                                                                                      |
+| -------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `--vercel-token, -vt <token>`    | Your Vercel API token.                                                                                           |
+| `--github-token, -gt <token>`    | Your GitHub API token.                                                                                           |
+| `--create-github-workflow, -cgw` | Create a GitHub Actions workflow file for Vercel deployment.                                                     |
+| `--debug, -d`                    | Enable debug mode to log extra information.                                                                      |
+| `--load-env, -le <envs>`         | Comma-separated list of environments to set variables in Vercel projects (e.g., preview,development,production). |
+| `--domain, -dom <domain>`        | Domain name to set up with your Vercel project.                                                                  |
 
 ### Example
 

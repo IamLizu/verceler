@@ -10,8 +10,8 @@
         "test": "jest",
         "test:coverage": "jest --coverage"
     },
-    "repository": "https://github.com/hasan-zaag/verceler-npm.git",
-    "author": "hasan-zaag <hasan@zaagsys.com>",
+    "repository": "https://github.com/IamLizu/verceler-npm.git",
+    "author": "IamLizu <he@smmahmudulhasan.com>",
     "license": "MIT",
     "dependencies": {
         "@octokit/rest": "^20.1.1",
@@ -40,8 +40,8 @@
         "vercel-cli",
         "devops"
     ],
-    "homepage": "https://github.com/hasan-zaag/verceler-npm#readme",
+    "homepage": "https://github.com/IamLizu/verceler-npm#readme",
     "bugs": {
-        "url": "https://github.com/hasan-zaag/verceler-npm/issues"
+        "url": "https://github.com/IamLizu/verceler-npm/issues"
     }
 }

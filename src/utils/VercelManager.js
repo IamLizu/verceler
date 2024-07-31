@@ -20,7 +20,7 @@ class VercelManager {
 
     linkProject() {
         try {
-            execSync("vercel link --yes");
+            execSync(`vercel link --yes --token ${this.vercelToken}`);
         } catch (error) {
             console.error("Failed to link Vercel project:", error.message);
         }

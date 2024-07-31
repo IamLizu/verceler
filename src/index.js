@@ -23,8 +23,8 @@ async function main() {
 
         npm.installVercelCli();
 
-        vercelManager.linkProject();
         vercelManager.setVercelToken(vercelToken);
+        vercelManager.linkProject();
 
         const envList = cliOptions.getEnvList();
 

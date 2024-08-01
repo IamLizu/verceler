@@ -10,6 +10,7 @@ jest.mock("fs");
 jest.mock("path");
 jest.mock("progress");
 jest.mock("cross-spawn");
+jest.mock();
 
 describe("VercelManager", () => {
     beforeEach(() => {
@@ -34,19 +35,24 @@ describe("VercelManager", () => {
 
     it("should link the Vercel project", () => {
         execSync.mockReturnValue(undefined);
+        vercelManager.setVercelToken("mock_token");
         vercelManager.linkProject();
 
-        expect(execSync).toHaveBeenCalledWith("vercel link --yes");
+        expect(execSync).toHaveBeenCalledWith(
+            "vercel link --yes --token mock_token"
+        );
     });
 
     it("should handle error when linking the Vercel project fails", () => {
         execSync.mockImplementation(() => {
             throw new Error("Linking failed");
         });
-
+        vercelManager.setVercelToken("mock_token");
         vercelManager.linkProject();
 
-        expect(execSync).toHaveBeenCalledWith("vercel link --yes");
+        expect(execSync).toHaveBeenCalledWith(
+            "vercel link --yes --token mock_token"
+        );
         expect(console.error).toHaveBeenCalledWith(
             "Failed to link Vercel project:",
             "Linking failed"

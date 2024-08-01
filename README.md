@@ -21,7 +21,7 @@ yarn global add verceler
 After installing verceler, you can use it via the command line. Here are some common commands and options:
 
 ```sh
-verceler --vt <vercel_token> --gt <github_token> [options]
+verceler -vt <vercel_token> -gt <github_token> [options]
 ```
 
 ### Options

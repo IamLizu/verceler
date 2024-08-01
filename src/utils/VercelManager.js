@@ -139,7 +139,9 @@ class VercelManager {
     addDomain(domain) {
         console.log(`\nAdding domain ${domain}...`);
         try {
-            execSync(`vercel domains add ${domain}`);
+            execSync(
+                `vercel domains add ${domain} --token ${this.vercelToken}`
+            );
         } catch (error) {
             if (error.message.includes("have access")) {
                 console.log(

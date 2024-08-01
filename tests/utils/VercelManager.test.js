@@ -207,7 +207,9 @@ describe("VercelManager", () => {
         execSync.mockReturnValue(undefined);
         vercelManager.addDomain("example.com");
 
-        expect(execSync).toHaveBeenCalledWith("vercel domains add example.com");
+        expect(execSync).toHaveBeenCalledWith(
+            "vercel domains add example.com --token mock_token"
+        );
     });
 
     it("should log a message for a false positive warning regarding domain addition", () => {
@@ -217,7 +219,9 @@ describe("VercelManager", () => {
 
         vercelManager.addDomain("example.com");
 
-        expect(execSync).toHaveBeenCalledWith("vercel domains add example.com");
+        expect(execSync).toHaveBeenCalledWith(
+            "vercel domains add example.com --token mock_token"
+        );
         expect(console.log).toHaveBeenCalledWith(
             "\nAbove error regarding domain is a false positive warning from vercel! Please verify domain addition in your vercel project settings."
         );
@@ -230,7 +234,9 @@ describe("VercelManager", () => {
 
         vercelManager.addDomain("example.com");
 
-        expect(execSync).toHaveBeenCalledWith("vercel domains add example.com");
+        expect(execSync).toHaveBeenCalledWith(
+            "vercel domains add example.com --token mock_token"
+        );
         expect(console.error).toHaveBeenCalledWith(
             "Failed to add domain example.com:",
             "Some other error"

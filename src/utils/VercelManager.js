@@ -64,9 +64,13 @@ class VercelManager {
 
     checkIfEnvExists(key) {
         try {
-            const result = spawn.sync("vercel", ["env", "ls", "production"], {
-                encoding: "utf-8",
-            });
+            const result = spawn.sync(
+                "vercel",
+                ["env", "ls", "production", "--token", this.vercelToken],
+                {
+                    encoding: "utf-8",
+                }
+            );
             if (result.error) {
                 throw result.error;
             }
@@ -79,10 +83,14 @@ class VercelManager {
 
     addEnvVariable(key, value, env, bar) {
         try {
-            const result = spawn.sync("vercel", ["env", "add", key, env], {
-                input: value,
-                stdio: "pipe",
-            });
+            const result = spawn.sync(
+                "vercel",
+                ["env", "add", key, env, "--token", this.vercelToken],
+                {
+                    input: value,
+                    stdio: "pipe",
+                }
+            );
             if (result.error) {
                 throw result.error;
             }
@@ -99,7 +107,15 @@ class VercelManager {
         try {
             const result = spawn.sync(
                 "vercel",
-                ["env", "add", key, env, "--force"],
+                [
+                    "env",
+                    "add",
+                    key,
+                    env,
+                    "--force",
+                    "--token",
+                    this.vercelToken,
+                ],
                 { input: value, stdio: "pipe" }
             );
             if (result.error) {

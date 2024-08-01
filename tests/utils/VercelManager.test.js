@@ -85,7 +85,7 @@ describe("VercelManager", () => {
 
         expect(spawn.sync).toHaveBeenCalledWith(
             "vercel",
-            ["env", "add", "KEY", "development"],
+            ["env", "add", "KEY", "development", "--token", "mock_token"],
             {
                 input: "value",
                 stdio: "pipe",
@@ -103,7 +103,15 @@ describe("VercelManager", () => {
 
         expect(spawn.sync).toHaveBeenCalledWith(
             "vercel",
-            ["env", "add", "KEY", "development", "--force"],
+            [
+                "env",
+                "add",
+                "KEY",
+                "development",
+                "--force",
+                "--token",
+                "mock_token",
+            ],
             { input: "value", stdio: "pipe" }
         );
         expect(console.error).toHaveBeenCalledWith(
@@ -122,7 +130,15 @@ describe("VercelManager", () => {
 
         expect(spawn.sync).toHaveBeenCalledWith(
             "vercel",
-            ["env", "add", "KEY", "development", "--force"],
+            [
+                "env",
+                "add",
+                "KEY",
+                "development",
+                "--force",
+                "--token",
+                "mock_token",
+            ],
             {
                 input: "value",
                 stdio: "pipe",
@@ -142,19 +158,35 @@ describe("VercelManager", () => {
 
         expect(spawn.sync).toHaveBeenCalledWith(
             "vercel",
-            ["env", "ls", "production"],
+            ["env", "ls", "production", "--token", "mock_token"],
             {
                 encoding: "utf-8",
             }
         );
         expect(spawn.sync).toHaveBeenCalledWith(
             "vercel",
-            ["env", "add", "KEY", "development", "--force"],
+            [
+                "env",
+                "add",
+                "KEY",
+                "development",
+                "--force",
+                "--token",
+                "mock_token",
+            ],
             { input: "value", stdio: "pipe" }
         );
         expect(spawn.sync).toHaveBeenCalledWith(
             "vercel",
-            ["env", "add", "KEY", "production", "--force"],
+            [
+                "env",
+                "add",
+                "KEY",
+                "production",
+                "--force",
+                "--token",
+                "mock_token",
+            ],
             { input: "value", stdio: "pipe" }
         );
         expect(bar.tick).toHaveBeenCalledTimes(2);
@@ -260,7 +292,7 @@ describe("VercelManager", () => {
 
         expect(spawn.sync).toHaveBeenCalledWith(
             "vercel",
-            ["env", "ls", "production"],
+            ["env", "ls", "production", "--token", "mock_token"],
             {
                 encoding: "utf-8",
             }
@@ -274,7 +306,7 @@ describe("VercelManager", () => {
 
         expect(spawn.sync).toHaveBeenCalledWith(
             "vercel",
-            ["env", "ls", "production"],
+            ["env", "ls", "production", "--token", "mock_token"],
             {
                 encoding: "utf-8",
             }
@@ -303,7 +335,15 @@ describe("VercelManager", () => {
 
         expect(spawn.sync).toHaveBeenCalledWith(
             "vercel",
-            ["env", "add", "KEY", "development", "--force"],
+            [
+                "env",
+                "add",
+                "KEY",
+                "development",
+                "--force",
+                "--token",
+                "mock_token",
+            ],
             { input: "value", stdio: "pipe" }
         );
         expect(console.error).toHaveBeenCalledWith(

@@ -38,7 +38,7 @@ verceler -vt <vercel_token> -gt <github_token> [options]
 ### Example
 
 ```sh
-verceler --vt your_vercel_token --gt your_github_token --create-github-workflow --load-env preview,development,production --domain yourdomain.com
+verceler -vt your_vercel_token -gt your_github_token --create-github-workflow --load-env preview,development,production --domain yourdomain.com
 ```
 
 This command will:

@@ -8,7 +8,8 @@
     },
     "scripts": {
         "test": "jest",
-        "test:coverage": "jest --coverage"
+        "test:coverage": "jest --coverage",
+        "build": "echo 'No build step required'"
     },
     "repository": "https://github.com/IamLizu/verceler.git",
     "author": "IamLizu <he@smmahmudulhasan.com>",

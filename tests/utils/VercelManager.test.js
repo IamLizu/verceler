@@ -212,14 +212,49 @@ describe("VercelManager", () => {
         });
     });
 
-    it("should throw an error if project.json is missing", () => {
+    it("should read Vercel credentials from repo.json when project.json is missing", () => {
         const projectJsonPath = path.join(".vercel", "project.json");
+        const repoJsonPath = path.join(".vercel", "repo.json");
+        const mockRepoJson = JSON.stringify({
+            remoteName: "origin",
+            projects: [
+                {
+                    id: "mock_repo_project_id",
+                    name: "sample-app",
+                    directory: ".",
+                    orgId: "mock_repo_org_id",
+                },
+            ],
+        });
+
+        fs.existsSync
+            .mockReturnValueOnce(false)
+            .mockReturnValueOnce(true);
+        fs.readFileSync.mockReturnValue(mockRepoJson);
+
+        const credentials = vercelManager.readVercelCredentials();
+
+        expect(fs.existsSync).toHaveBeenCalledWith(projectJsonPath);
+        expect(fs.existsSync).toHaveBeenCalledWith(repoJsonPath);
+        expect(fs.readFileSync).toHaveBeenCalledWith(repoJsonPath, "utf-8");
+        expect(credentials).toEqual({
+            vercelProjectId: "mock_repo_project_id",
+            vercelOrgId: "mock_repo_org_id",
+        });
+    });
+
+    it("should throw an error if both project.json and repo.json are missing", () => {
+        const projectJsonPath = path.join(".vercel", "project.json");
+        const repoJsonPath = path.join(".vercel", "repo.json");
         fs.existsSync.mockReturnValue(false);
 
         expect(() => {
             vercelManager.readVercelCredentials();
-        }).toThrow("project.json file not found in the .vercel folder");
+        }).toThrow(
+            "Neither project.json nor repo.json file found in the .vercel folder"
+        );
         expect(fs.existsSync).toHaveBeenCalledWith(projectJsonPath);
+        expect(fs.existsSync).toHaveBeenCalledWith(repoJsonPath);
     });
 
     it("should throw an error if projectId or orgId is missing in project.json", () => {
@@ -233,6 +268,44 @@ describe("VercelManager", () => {
         expect(() => {
             vercelManager.readVercelCredentials();
         }).toThrow("Either projectId or orgId is missing in project.json");
+    });
+
+    it("should throw an error when repo.json has no projects", () => {
+        const mockRepoJson = JSON.stringify({
+            remoteName: "origin",
+            projects: [],
+        });
+
+        fs.existsSync
+            .mockReturnValueOnce(false)
+            .mockReturnValueOnce(true);
+        fs.readFileSync.mockReturnValue(mockRepoJson);
+
+        expect(() => {
+            vercelManager.readVercelCredentials();
+        }).toThrow("No projects found in repo.json");
+    });
+
+    it("should throw an error when repo.json project entry is missing id or orgId", () => {
+        const mockRepoJson = JSON.stringify({
+            remoteName: "origin",
+            projects: [
+                {
+                    name: "sample-app",
+                    directory: ".",
+                    orgId: "mock_repo_org_id",
+                },
+            ],
+        });
+
+        fs.existsSync
+            .mockReturnValueOnce(false)
+            .mockReturnValueOnce(true);
+        fs.readFileSync.mockReturnValue(mockRepoJson);
+
+        expect(() => {
+            vercelManager.readVercelCredentials();
+        }).toThrow("Either id or orgId is missing in repo.json project entry");
     });
 
     it("should add a domain", () => {

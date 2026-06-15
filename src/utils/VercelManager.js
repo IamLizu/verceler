@@ -132,6 +132,7 @@ class VercelManager {
 
     readVercelCredentials() {
         const projectJsonPath = path.join(".vercel", "project.json");
+        const repoJsonPath = path.join(".vercel", "repo.json");
 
         if (fs.existsSync(projectJsonPath)) {
             const data = JSON.parse(fs.readFileSync(projectJsonPath, "utf-8"));
@@ -145,11 +146,34 @@ class VercelManager {
                     "Either projectId or orgId is missing in project.json"
                 );
             }
-        } else {
+        }
+
+        if (fs.existsSync(repoJsonPath)) {
+            const data = JSON.parse(fs.readFileSync(repoJsonPath, "utf-8"));
+            const projects = data.projects;
+
+            if (!Array.isArray(projects) || projects.length === 0) {
+                throw new Error("No projects found in repo.json");
+            }
+
+            const currentProject =
+                projects.find((project) => project.directory === ".") ||
+                projects[0];
+            const vercelProjectId = currentProject.id;
+            const vercelOrgId = currentProject.orgId;
+
+            if (vercelProjectId && vercelOrgId) {
+                return { vercelProjectId, vercelOrgId };
+            }
+
             throw new Error(
-                "project.json file not found in the .vercel folder"
+                "Either id or orgId is missing in repo.json project entry"
             );
         }
+
+        throw new Error(
+            "Neither project.json nor repo.json file found in the .vercel folder"
+        );
     }
 
     addDomain(domain) {

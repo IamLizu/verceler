@@ -15,16 +15,16 @@
     "author": "IamLizu <he@smmahmudulhasan.com>",
     "license": "MIT",
     "dependencies": {
-        "@octokit/rest": "^20.1.1",
-        "axios": "^1.6.8",
-        "commander": "^12.0.0",
-        "cross-spawn": "^7.0.3",
-        "libsodium-wrappers": "^0.7.13",
+        "@octokit/rest": "^22.0.1",
+        "axios": "^1.18.0",
+        "commander": "^15.0.0",
+        "cross-spawn": "^7.0.6",
+        "libsodium-wrappers": "^0.8.4",
         "progress": "^2.0.3"
     },
     "devDependencies": {
-        "jest": "^29.7.0",
-        "jest-mock": "^29.7.0"
+        "jest": "^30.4.2",
+        "jest-mock": "^30.4.1"
     },
     "keywords": [
         "vercel",

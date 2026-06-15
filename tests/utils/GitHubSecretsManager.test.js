@@ -3,7 +3,9 @@ const { Octokit } = require("@octokit/rest");
 const sodium = require("libsodium-wrappers");
 const { execSync } = require("child_process");
 
-jest.mock("@octokit/rest");
+// @octokit/rest is ESM-only, so it cannot be auto-mocked (Jest would load the
+// real module). Provide a factory mock with a constructor we can configure.
+jest.mock("@octokit/rest", () => ({ Octokit: jest.fn() }));
 jest.mock("child_process");
 
 // Mock sodium functions properly

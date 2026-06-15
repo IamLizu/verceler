@@ -2,9 +2,12 @@
 
 `verceler` is a CLI tool that simplifies and automates the process of deploying based on tags/releases to Vercel. It helps you automate trunk-based development and deploy through tags and releases.
 
+>[!IMPORTANT]
+> By default `verceler` generates a release based workflwo. To target tags, please change the generated workflow file on later steps to target accordingly.
+
 ## Installation
 
-To install `verceler`, you can use npm or yarn:
+To install `verceler`, you can use pnpm, npm or yarn:
 
 ```sh
 npm install -g verceler
@@ -14,6 +17,12 @@ or
 
 ```sh
 yarn global add verceler
+```
+
+or 
+
+```sh
+pnpm add -g verceler
 ```
 
 ## Usage

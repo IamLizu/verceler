@@ -26,6 +26,10 @@
         "jest": "^30.4.2",
         "jest-mock": "^30.4.1"
     },
+    "resolutions": {
+        "test-exclude": "^7.0.2",
+        "**/anymatch/picomatch": "^2.3.2"
+    },
     "keywords": [
         "vercel",
         "deployment",

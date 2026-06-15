@@ -60,7 +60,7 @@ describe("CliOptions", () => {
         expect(program.addHelpText).toHaveBeenCalledWith(
             "afterAll",
             expect.stringContaining(
-                "Example: verceler --vt <token> --gt <token>"
+                "Example: verceler -vt <token> -gt <token>"
             )
         );
     });

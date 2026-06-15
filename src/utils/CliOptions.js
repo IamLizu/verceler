@@ -39,7 +39,7 @@ class CliOptions {
 
         this.program.addHelpText(
             "afterAll",
-            "Example: verceler --vt <token> --gt <token>"
+            "Example: verceler -vt <token> -gt <token>"
         );
     }
 
